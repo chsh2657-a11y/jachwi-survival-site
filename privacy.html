@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>개인정보처리방침 — 자취생존</title>
+<meta name="description" content="자취생존 앱 개인정보처리방침">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme: { extend: {
+  colors: {
+    "on-primary-container": "#00422b", "surface-container-high": "#dce9ff", "on-surface": "#0b1c30",
+    "secondary": "#b90538", "surface-container-low": "#eff4ff", "surface-container-lowest": "#ffffff",
+    "primary": "#006c49", "outline": "#6c7a71", "surface": "#f8f9ff", "on-surface-variant": "#3c4a42",
+    "surface-container": "#e5eeff", "surface-variant": "#d3e4fe",
+    "primary-container": "#10b981", "on-primary": "#ffffff",
+    "background": "#f8f9ff"
+  },
+  borderRadius: { DEFAULT: "1rem", lg: "2rem", xl: "3rem", full: "9999px" },
+  fontFamily: {
+    display: ["Plus Jakarta Sans", "Pretendard", "sans-serif"],
+    body: ["Nunito Sans", "Pretendard", "sans-serif"]
+  }
+}}};
+</script>
+</head>
+<body class="bg-background text-on-surface font-body antialiased">
+
+<header class="w-full bg-surface-container-lowest/90 backdrop-blur-xl border-b border-surface-variant/60">
+  <div class="max-w-3xl mx-auto px-5 h-16 flex items-center gap-2">
+    <div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary font-display font-extrabold">자</div>
+    <span class="font-display font-bold text-lg tracking-tight">자취생존</span>
+  </div>
+</header>
+
+<main class="max-w-3xl mx-auto px-5 py-12 leading-relaxed">
+  <h1 class="font-display text-3xl font-extrabold mb-2">개인정보처리방침</h1>
+  <p class="text-on-surface-variant text-sm mb-10">시행일: 2026년 9월 13일 · 최종 수정일: 2026년 9월 13일</p>
+
+  <p class="mb-6">
+    "자취생존"(이하 "본 앱")은 이용자의 개인정보를 소중히 다룹니다. 본 앱은 <strong>로컬 기기 저장 기반(오프라인 우선)</strong>으로 설계되어,
+    이용자가 입력한 가계부·근무기록·냉장고 재고 등의 데이터는 이용자의 기기 내부에만 저장되며,
+    개발자를 포함한 어느 누구의 서버로도 전송되지 않습니다. 아래는 본 앱이 실제로 처리하는 정보와 그 범위를 항목별로 안내합니다.
+  </p>
+
+  <h2 class="font-display text-xl font-bold mt-8 mb-3">1. 앱이 자체적으로 수집하는 정보</h2>
+  <p class="mb-2"><strong>없음.</strong> 본 앱은 회원가입·로그인 기능이 없으며, 이용자가 입력하는 다음 정보는 전부 기기 내부 데이터베이스(Room/SQLite)에만 저장됩니다.</p>
+  <ul class="list-disc pl-6 mb-6 space-y-1">
+    <li>근무지·근무 기록(시급, 근무 시간 등)</li>
+    <li>지출 내역·예산 목표</li>
+    <li>냉장고/생활용품 재고 및 유통기한</li>
+    <li>닉네임, 알림 시간·주기 등 앱 환경설정</li>
+  </ul>
+  <p class="mb-6">
+    이 데이터는 이용자가 설정 화면에서 직접 내보내기(로컬 JSON 파일)를 실행하지 않는 한 기기 밖으로 나가지 않으며,
+    앱을 삭제하면 함께 삭제됩니다. 설정의 "전체 초기화"로 언제든 직접 삭제할 수도 있습니다.
+  </p>
+
+  <h2 class="font-display text-xl font-bold mt-8 mb-3">2. 광고 (Google AdMob)</h2>
+  <p class="mb-3">
+    본 앱은 무료 이용자에게 배너 광고를 표시하기 위해 Google AdMob SDK를 사용합니다.
+    광고 서비스 제공 과정에서 Google이 광고 식별자(Advertising ID), 기기 정보, 대략적인 위치 등을 수집·처리할 수 있습니다.
+    이는 본 앱이 아닌 Google의 개인정보처리방침에 따라 처리되며, 자세한 내용은 아래 링크에서 확인할 수 있습니다.
+  </p>
+  <p class="mb-6">
+    <a class="text-primary font-semibold underline" href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Google 파트너 사이트 정책 및 개인정보처리방침</a>
+  </p>
+
+  <h2 class="font-display text-xl font-bold mt-8 mb-3">3. 영수증 인식(기기 내 처리)</h2>
+  <p class="mb-6">
+    냉장고 방어 탭의 "영수증 찍어서 등록" 기능은 이용자가 직접 선택한 사진 1장을 Google ML Kit의 온디바이스(On-device) 텍스트 인식 기능으로 처리합니다.
+    이 처리는 기기 내부에서만 이루어지며, 사진이나 인식 결과가 외부 서버로 전송되지 않습니다.
+    (다만 인식 모델 자체를 최초 1회 내려받을 때만 인터넷 연결이 사용될 수 있습니다.)
+  </p>
+
+  <h2 class="font-display text-xl font-bold mt-8 mb-3">4. 기기 권한</h2>
+  <ul class="list-disc pl-6 mb-6 space-y-1">
+    <li><strong>알림(POST_NOTIFICATIONS)</strong>: 식재료 유통기한 임박(D-3/D-1 등) 알림을 보내기 위해 사용합니다.</li>
+    <li><strong>사진 접근</strong>: 영수증 인식 및 파일 백업 시 이용자가 시스템 선택 창에서 직접 고른 파일에만 접근합니다(전체 저장소 접근 아님).</li>
+  </ul>
+
+  <h2 class="font-display text-xl font-bold mt-8 mb-3">5. 아동의 개인정보</h2>
+  <p class="mb-6">본 앱은 만 14세 미만 아동을 주 대상으로 하지 않으며, 아동으로부터 개인정보를 의도적으로 수집하지 않습니다.</p>
+
+  <h2 class="font-display text-xl font-bold mt-8 mb-3">6. 개인정보처리방침의 변경</h2>
+  <p class="mb-6">법령이나 서비스 변경에 따라 본 방침이 수정될 수 있으며, 변경 시 본 페이지를 통해 고지합니다.</p>
+
+  <h2 class="font-display text-xl font-bold mt-8 mb-3">7. 문의처</h2>
+  <p class="mb-10">본 개인정보처리방침이나 앱 이용과 관련한 문의는 아래 연락처로 보내주세요.<br>
+    이메일: <span class="font-semibold">[여기에 공개용 연락처 이메일을 입력하세요]</span>
+  </p>
+
+  <a href="index.html" class="text-primary font-display font-semibold">← 자취생존 소개 페이지로 돌아가기</a>
+</main>
+
+</body>
+</html>
