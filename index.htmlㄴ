@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>자취생존 — 지갑도 냉장고도 알바도, 하나의 앱으로</title>
+<meta name="description" content="자취생존: 1인 가구를 위한 지출 관리 + 냉장고 유통기한 방어 + 주휴수당 시뮬레이터 올인원 앱">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme: { extend: {
+  colors: {
+    "on-primary-container": "#00422b", "surface-container-high": "#dce9ff", "on-surface": "#0b1c30",
+    "secondary": "#b90538", "surface-container-low": "#eff4ff", "surface-container-lowest": "#ffffff",
+    "on-secondary-fixed": "#40000d", "primary": "#006c49", "tertiary-container": "#4aaaef",
+    "outline": "#6c7a71", "surface": "#f8f9ff", "on-surface-variant": "#3c4a42",
+    "surface-container": "#e5eeff", "surface-variant": "#d3e4fe", "on-tertiary-container": "#003c5e",
+    "primary-fixed": "#6ffbbe", "secondary-container": "#dc2c4f", "on-tertiary": "#ffffff",
+    "primary-container": "#10b981", "on-secondary-container": "#fffbff", "secondary-fixed": "#ffdadb",
+    "error-container": "#ffdad6", "outline-variant": "#bbcabf", "on-primary": "#ffffff",
+    "on-secondary": "#ffffff", "error": "#ba1a1a", "tertiary": "#006398", "on-error": "#ffffff",
+    "background": "#f8f9ff"
+  },
+  borderRadius: { DEFAULT: "1rem", lg: "2rem", xl: "3rem", full: "9999px" },
+  fontFamily: {
+    display: ["Plus Jakarta Sans", "Pretendard", "sans-serif"],
+    body: ["Nunito Sans", "Pretendard", "sans-serif"]
+  }
+}}};
+</script>
+<style>
+  body{font-feature-settings:"tnum";}
+  .phone-frame{
+    width:260px; border-radius:2.25rem; padding:10px; background:#0b1c30;
+    box-shadow:0 20px 50px rgba(11,28,48,0.25);
+  }
+  .phone-frame img{ border-radius:1.6rem; display:block; width:100%; }
+  .status-dot{width:8px;height:8px;border-radius:9999px;display:inline-block;}
+</style>
+</head>
+<body class="bg-background text-on-surface font-body antialiased">
+
+<!-- Nav -->
+<header class="fixed top-0 w-full z-50 bg-surface-container-lowest/90 backdrop-blur-xl border-b border-surface-variant/60">
+  <div class="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary font-display font-extrabold">자</div>
+      <span class="font-display font-bold text-lg tracking-tight">자취생존</span>
+    </div>
+    <nav class="hidden md:flex items-center gap-8 font-display text-sm font-semibold text-on-surface-variant">
+      <a href="#problem" class="hover:text-primary transition-colors">고민</a>
+      <a href="#features" class="hover:text-primary transition-colors">기능</a>
+      <a href="#pricing" class="hover:text-primary transition-colors">요금제</a>
+      <a href="#status" class="hover:text-primary transition-colors">진행 상황</a>
+    </nav>
+    <a href="#status" class="px-4 py-2 rounded-full bg-primary-container text-on-primary font-display text-sm font-bold shadow-sm active:scale-95 transition-transform">개발 소식 보기</a>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="pt-32 pb-20 px-5 max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
+  <div class="flex-1 text-center md:text-left">
+    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-low text-primary font-display text-xs font-bold">
+      <span class="status-dot bg-primary animate-pulse"></span> 오늘도 슬기롭게 자취 생존 중 🌱
+    </span>
+    <h1 class="mt-5 font-display text-4xl md:text-5xl font-extrabold tracking-tight leading-tight text-on-surface">
+      지갑도, 냉장고도, 이번 달 알바도<br class="hidden md:block">
+      <span class="text-primary">자취생존</span> 하나로 지킨다
+    </h1>
+    <p class="mt-5 font-body text-lg text-on-surface-variant leading-relaxed max-w-lg mx-auto md:mx-0">
+      지출 관리 + 유통기한 방어 + 주휴수당 사수를 한 곳에서.
+      잔소리 대신 <span class="font-bold text-on-surface">"방어 성공"</span>으로 응원하는 1인 가구 생활 관리 앱입니다.
+    </p>
+    <div class="mt-8 flex flex-col sm:flex-row items-center gap-3 justify-center md:justify-start">
+      <a href="#pricing" class="w-full sm:w-auto px-6 py-3 rounded-DEFAULT bg-primary-container text-on-primary font-display font-bold shadow-[0_4px_12px_rgba(16,185,129,0.25)] active:scale-[0.985] transition-all text-center">요금제 보기</a>
+      <a href="#features" class="w-full sm:w-auto px-6 py-3 rounded-DEFAULT bg-surface-container-low text-on-surface font-display font-bold active:scale-[0.985] transition-all text-center">핵심 기능 둘러보기</a>
+    </div>
+  </div>
+  <div class="flex-shrink-0">
+    <div class="phone-frame">
+      <img src="assets/screens/home-dashboard.png" alt="자취생존 홈 대시보드 화면">
+    </div>
+  </div>
+</section>
+
+<!-- Problem -->
+<section id="problem" class="py-20 px-5 bg-surface-container-lowest">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center max-w-xl mx-auto">
+      <h2 class="font-display text-3xl font-extrabold text-on-surface">자취생이라면 다 아는 그 고민</h2>
+      <p class="mt-3 font-body text-on-surface-variant">세 가지 문제, 결국 원인은 하나입니다 — 돈이 새는 걸 눈치채지 못하는 것.</p>
+    </div>
+    <div class="mt-12 grid md:grid-cols-3 gap-6">
+      <div class="p-6 rounded-DEFAULT bg-background border border-surface-variant/60">
+        <div class="w-11 h-11 rounded-full bg-secondary-fixed flex items-center justify-center text-secondary mb-4">
+          <span class="material-symbols-outlined">account_balance_wallet</span>
+        </div>
+        <h3 class="font-display font-bold text-lg">지출 관리</h3>
+        <p class="mt-2 font-body text-sm text-on-surface-variant leading-relaxed">월급은 스쳐 지나가고 통장은 텅장. 이번 달 어디서 새는지 기록조차 안 남아있진 않나요?</p>
+      </div>
+      <div class="p-6 rounded-DEFAULT bg-background border border-surface-variant/60">
+        <div class="w-11 h-11 rounded-full bg-primary-fixed/50 flex items-center justify-center text-primary mb-4">
+          <span class="material-symbols-outlined">kitchen</span>
+        </div>
+        <h3 class="font-display font-bold text-lg">유통기한 방어</h3>
+        <p class="mt-2 font-body text-sm text-on-surface-variant leading-relaxed">혼자 먹기엔 늘 애매한 양. 냉장고 구석에서 상해버린 식재료, 이번 달만 벌써 몇 번째인가요?</p>
+      </div>
+      <div class="p-6 rounded-DEFAULT bg-background border border-surface-variant/60">
+        <div class="w-11 h-11 rounded-full bg-tertiary-container/30 flex items-center justify-center text-tertiary mb-4">
+          <span class="material-symbols-outlined">payments</span>
+        </div>
+        <h3 class="font-display font-bold text-lg">주휴수당 사수</h3>
+        <p class="mt-2 font-body text-sm text-on-surface-variant leading-relaxed">이번 주 15시간 넘었나 헷갈려서 그냥 넘어간 수당, 계산해본 적 있나요?</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section id="features" class="py-20 px-5">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center max-w-xl mx-auto">
+      <h2 class="font-display text-3xl font-extrabold text-on-surface">4개 탭이면 충분합니다</h2>
+      <p class="mt-3 font-body text-on-surface-variant">홈 대시보드에서 오늘 할 일을 한눈에, 나머지 탭에서 자세히 관리하세요.</p>
+    </div>
+
+    <div class="mt-14 grid md:grid-cols-2 gap-6">
+      <div class="p-5 rounded-DEFAULT bg-surface-container-lowest border border-surface-variant/60">
+        <span class="material-symbols-outlined text-primary">home</span>
+        <h3 class="mt-2 font-display font-bold">홈 대시보드</h3>
+        <p class="mt-1 font-body text-sm text-on-surface-variant">이번 달 번 돈, 오늘 쓴 돈, 오늘 꼭 먹어야 할 식재료를 한 화면에서 확인합니다.</p>
+      </div>
+      <div class="p-5 rounded-DEFAULT bg-surface-container-lowest border border-surface-variant/60">
+        <span class="material-symbols-outlined text-secondary">receipt_long</span>
+        <h3 class="mt-2 font-display font-bold">지출 관리</h3>
+        <p class="mt-1 font-body text-sm text-on-surface-variant">변동비·고정비를 나누고, 남은 일수로 오늘 써도 되는 금액을 자동으로 계산합니다.</p>
+      </div>
+    </div>
+
+    <!-- 주휴수당 하이라이트 -->
+    <div class="mt-6 p-6 md:p-10 rounded-lg bg-surface-container-lowest border border-surface-variant/60 flex flex-col md:flex-row items-center gap-10">
+      <div class="flex-1 order-2 md:order-1">
+        <span class="px-3 py-1 rounded-full bg-tertiary-container/20 text-tertiary font-display text-xs font-bold">핵심 차별 기능</span>
+        <h3 class="mt-3 font-display text-2xl font-extrabold">주휴수당 시뮬레이터</h3>
+        <p class="mt-3 font-body text-on-surface-variant leading-relaxed">
+          주 소정근로 15시간 기준선을 자동으로 계산해 <b class="text-on-surface">달성 / 위기 / 미대상</b> 상태를 바로 보여줍니다.
+          위기 상태일 땐 "1시간 연장 또는 대타 등록"을 바로 제안해, 놓치기 쉬운 수당을 놓치지 않게 돕습니다.
+        </p>
+      </div>
+      <div class="order-1 md:order-2 flex-shrink-0">
+        <div class="phone-frame" style="width:220px">
+          <img src="assets/screens/payday-simulator.png" alt="주휴수당 시뮬레이터 화면">
+        </div>
+      </div>
+    </div>
+
+    <!-- 냉장고 방어 하이라이트 -->
+    <div class="mt-6 p-6 md:p-10 rounded-lg bg-surface-container-lowest border border-surface-variant/60 flex flex-col md:flex-row items-center gap-10">
+      <div class="flex-shrink-0">
+        <div class="phone-frame" style="width:220px">
+          <img src="assets/screens/pantry-defense.png" alt="냉장고 방어 화면">
+        </div>
+      </div>
+      <div class="flex-1">
+        <span class="px-3 py-1 rounded-full bg-primary-fixed/40 text-on-primary-container font-display text-xs font-bold">잔소리 없는 격려 톤</span>
+        <h3 class="mt-3 font-display text-2xl font-extrabold">냉장고 방어</h3>
+        <p class="mt-3 font-body text-on-surface-variant leading-relaxed">
+          유통기한이 임박한 순서대로 D-day pill로 보여주고, 다 먹으면 "방어 성공"으로 기록합니다.
+          버려도 혼내지 않습니다 — 내일 다시 방어하면 되니까요. 절약한 금액은 자동으로 누적됩니다.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section id="pricing" class="py-20 px-5 bg-surface-container-lowest">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center max-w-xl mx-auto">
+      <h2 class="font-display text-3xl font-extrabold text-on-surface">요금제</h2>
+      <p class="mt-3 font-body text-on-surface-variant">무료로 시작해서, 필요한 만큼만 올리세요.</p>
+    </div>
+
+    <div class="mt-12 grid md:grid-cols-3 gap-6 items-stretch">
+      <!-- Free -->
+      <div class="p-7 rounded-lg bg-background border border-surface-variant/60 flex flex-col">
+        <h3 class="font-display font-bold text-lg">무료</h3>
+        <p class="mt-2 font-display text-3xl font-extrabold">0원</p>
+        <ul class="mt-6 space-y-3 font-body text-sm text-on-surface-variant flex-1">
+          <li class="flex gap-2"><span class="material-symbols-outlined text-primary text-[18px]">check</span>텍스트 수기 입력으로 지출·냉장고 관리</li>
+          <li class="flex gap-2"><span class="material-symbols-outlined text-primary text-[18px]">check</span>주휴수당 시뮬레이터</li>
+          <li class="flex gap-2 text-on-surface-variant/60"><span class="material-symbols-outlined text-[18px]">close</span>사진으로 영수증·식재료 등록</li>
+          <li class="flex gap-2 text-on-surface-variant/60"><span class="material-symbols-outlined text-[18px]">close</span>냉장고 캐릭터 표시</li>
+        </ul>
+        <p class="mt-6 text-xs text-on-surface-variant/70">광고가 표시됩니다 (배너 + 화면 광고)</p>
+      </div>
+
+      <!-- Plus -->
+      <div class="p-7 rounded-lg bg-background border-2 border-primary-container flex flex-col relative">
+        <h3 class="font-display font-bold text-lg">Plus</h3>
+        <p class="mt-2 font-display text-3xl font-extrabold">월 3,900원</p>
+        <ul class="mt-6 space-y-3 font-body text-sm text-on-surface-variant flex-1">
+          <li class="flex gap-2"><span class="material-symbols-outlined text-primary text-[18px]">check</span>무료 플랜 전체 기능</li>
+          <li class="flex gap-2"><span class="material-symbols-outlined text-primary text-[18px]">check</span>화면 전면광고 감소 (하단 배너는 유지)</li>
+          <li class="flex gap-2"><span class="material-symbols-outlined text-primary text-[18px]">check</span><span>영수증·식재료 <b class="text-on-surface">사진 인식 등록</b>(지속 업데이트)</span></li>
+          <li class="flex gap-2 text-on-surface-variant/60"><span class="material-symbols-outlined text-[18px]">close</span>냉장고 캐릭터 표시</li>
+        </ul>
+      </div>
+
+      <!-- Pro -->
+      <div class="p-7 rounded-lg bg-on-surface text-surface flex flex-col">
+        <h3 class="font-display font-bold text-lg">Pro</h3>
+        <p class="mt-2 font-display text-3xl font-extrabold">월 9,900원</p>
+        <ul class="mt-6 space-y-3 font-body text-sm text-surface-variant/90 flex-1">
+          <li class="flex gap-2"><span class="material-symbols-outlined text-primary-fixed text-[18px]">check</span>Plus 플랜 전체 기능</li>
+          <li class="flex gap-2"><span class="material-symbols-outlined text-primary-fixed text-[18px]">check</span><span>신규 업데이트 기능 <b class="text-white">얼리 액세스</b></span></li>
+          <li class="flex gap-2"><span class="material-symbols-outlined text-primary-fixed text-[18px]">check</span><span><b class="text-white">냉장고 캐릭터</b> 스프라이트 표시</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="mt-6 text-center text-xs text-on-surface-variant/70">가격·혜택은 정식 출시 전 조정될 수 있습니다.</p>
+  </div>
+</section>
+
+<!-- Status -->
+<section id="status" class="py-20 px-5">
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 class="font-display text-3xl font-extrabold text-on-surface">지금 어디까지 왔나요?</h2>
+    <p class="mt-3 font-body text-on-surface-variant">투명하게 공유합니다. 아직 출시 전, 개발을 준비하는 단계입니다.</p>
+    <div class="mt-12 grid sm:grid-cols-3 gap-6">
+      <div class="p-6 rounded-DEFAULT bg-surface-container-lowest border border-surface-variant/60">
+        <span class="material-symbols-outlined text-primary text-3xl">check_circle</span>
+        <h3 class="mt-3 font-display font-bold">디자인 완료</h3>
+        <p class="mt-1 font-body text-sm text-on-surface-variant">전체 화면 UI/UX 시안 144개 확정</p>
+      </div>
+      <div class="p-6 rounded-DEFAULT bg-surface-container-lowest border border-surface-variant/60">
+        <span class="material-symbols-outlined text-tertiary text-3xl">build_circle</span>
+        <h3 class="mt-3 font-display font-bold">개발 착수 단계</h3>
+        <p class="mt-1 font-body text-sm text-on-surface-variant">Android 프로젝트 기초 골격 구축 중</p>
+      </div>
+      <div class="p-6 rounded-DEFAULT bg-surface-container-lowest border border-surface-variant/60">
+        <span class="material-symbols-outlined text-on-surface-variant text-3xl">schedule</span>
+        <h3 class="mt-3 font-display font-bold">출시일 미정</h3>
+        <p class="mt-1 font-body text-sm text-on-surface-variant">개발 진행에 따라 추후 안내 예정</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-10 px-5 border-t border-surface-variant/60">
+  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-on-surface-variant font-body">
+    <span>© 2026 자취생존</span>
+    <span>문의: [이메일 주소를 입력하세요]</span>
+  </div>
+</footer>
+
+</body>
+</html>
